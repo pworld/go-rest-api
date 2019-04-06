@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"go-rest-api/app/model"
 	"net/http"
 
@@ -32,7 +31,6 @@ func CreateEmployeeFriend(c *gin.Context) {
 	var employeeFriend model.EmployeeFriend
 
 	c.BindJSON(&employeeFriend)
-	fmt.Println(c)
 	err := Database.Save(&employeeFriend).Error
 
 	if err == nil {
@@ -51,9 +49,9 @@ func CreateEmployeeFriend(c *gin.Context) {
 // UpdateEmployeeFriend - UpdateEmployeeFriend
 func UpdateEmployeeFriend(c *gin.Context) {
 	var employeeFriend model.EmployeeFriend
-	empStatusID := c.Param("id")
+	empFriendID := c.Param("id")
 
-	Database.First(&employeeFriend, empStatusID)
+	Database.First(&employeeFriend, empFriendID)
 	if employeeFriend.ID == 0 {
 		c.JSON(http.StatusNotFound, gin.H{
 			"status":     http.StatusNotFound,
@@ -83,9 +81,9 @@ func UpdateEmployeeFriend(c *gin.Context) {
 // DeleteEmployeeFriend - DeleteEmployeeFriend
 func DeleteEmployeeFriend(c *gin.Context) {
 	var employeeFriend model.EmployeeFriend
-	empStatusID := c.Param("id")
+	empFriendID := c.Param("id")
 
-	Database.First(&employeeFriend, empStatusID)
+	Database.First(&employeeFriend, empFriendID)
 	if employeeFriend.ID == 0 {
 		c.JSON(http.StatusNotFound, gin.H{
 			"status":     http.StatusNotFound,
