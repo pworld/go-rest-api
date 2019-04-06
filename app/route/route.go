@@ -25,13 +25,6 @@ func Init() *gin.Engine {
 		auth.GET("/hello", controller.HelloHandler)
 	}
 
-	// Refresh time can be longer than token timeout
-	auth.GET("/refresh_token", authMiddleware.RefreshHandler)
-	auth.Use(authMiddleware.MiddlewareFunc())
-	{
-		auth.GET("/hello", controller.HelloHandler)
-	}
-
 	empStatus := r.Group("/employee_status")
 	empStatus.Use(authMiddleware.MiddlewareFunc())
 	{
