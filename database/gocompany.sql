@@ -171,5 +171,4 @@ ALTER TABLE "public"."employee_friends" ADD FOREIGN KEY ("friend_ktp") REFERENCE
 -- Insert Master Data for table employee_status
 -- ----------------------------
 
-INSERT INTO "public"."employee_status" ("name","description") VALUES("active", "active");
-INSERT INTO "public"."employee_status" ("name","description") VALUES("unactive", "not active");
+INSERT INTO "public"."employee_status"(id, name, description) VALUES (1, 'active', 'active'), (2, 'unactive','not active');
