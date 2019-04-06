@@ -52,7 +52,7 @@ func TestUpdateCompany(t *testing.T) {
 	// Grab our router
 	router := gin.Default()
 
-	router.POST("/company/update/1", func(c *gin.Context) {
+	router.PUT("/company/update/1", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"name":            "PT ABC",
 			"tdp":             "STS12345",
@@ -78,7 +78,7 @@ func TestDeleteCompany(t *testing.T) {
 	// Grab our router
 	router := gin.Default()
 
-	router.POST("/company/delete", func(c *gin.Context) {
+	router.DELETE("/company/delete", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"id": 1,
 		})
