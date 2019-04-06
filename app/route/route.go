@@ -40,15 +40,46 @@ func Init() *gin.Engine {
 	{
 		emp.GET("/", controller.AllEmployee)
 		emp.POST("/", controller.AddEmployee)
+		emp.PUT("/:id", controller.UpdateEmployee)
+		emp.DELETE("/:id", controller.DeleteEmployee)
 	}
 
 	cmp := r.Group("/companies")
 	cmp.Use(authMiddleware.MiddlewareFunc())
 	{
 		cmp.GET("/", controller.AllCompany)
-		cmp.POST("/", controller.CreateCompany)
+		cmp.POST("/create", controller.CreateCompany)
+		cmp.PUT("/update", controller.UpdateCompany)
+		cmp.DELETE("/delete", controller.DeleteCompany)
 		cmp.POST("/list", controller.ListCompany)
 	}
 
+	smp := r.Group("/employee-search")
+	smp.Use(authMiddleware.MiddlewareFunc())
+	{
+		smp.GET("/", controller.SearchEmployee)
+		smp.GET("/history", controller.SearchEmployeeHistory)
+		smp.GET("/employee-company", controller.SearchEmployeeCompany)
+		smp.GET("/employee-company-friends", controller.SearchEmployeeFriends)
+		smp.GET("/employee-friends-friends", controller.SearchEmployeeFF)
+	}
+
+	fmp := r.Group("/employee-friend")
+	fmp.Use(authMiddleware.MiddlewareFunc())
+	{
+		fmp.GET("/", controller.AllEmployeeFriend)
+		fmp.POST("/create", controller.CreateEmployeeFriend)
+		fmp.PUT("/update", controller.UpdateEmployeeFriend)
+		fmp.DELETE("/delete", controller.DeleteEmployeeFriend)
+	}
+
+	cemp := r.Group("/company-employee")
+	cemp.Use(authMiddleware.MiddlewareFunc())
+	{
+		cemp.GET("/", controller.AllCompanyEmployee)
+		cemp.POST("/create", controller.CreateCompanyEmployee)
+		cemp.PUT("/update", controller.UpdateCompanyEmployee)
+		cemp.DELETE("/delete", controller.DeleteCompanyEmployee)
+	}
 	return r
 }
