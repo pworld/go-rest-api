@@ -43,7 +43,7 @@ func AddEmployee(c *gin.Context) {
 		Handphone:     input.Handphone,
 		MaritalStatus: input.MaritalStatus,
 		LastPosition:  input.Position,
-		LastCompanyId: input.CompanyID,
+		CompanyID:     input.CompanyID,
 	}
 
 	if err := tx.Create(&employee).Error; err != nil {

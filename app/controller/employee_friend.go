@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"go-rest-api/app/model"
 	"net/http"
 
@@ -31,6 +32,7 @@ func CreateEmployeeFriend(c *gin.Context) {
 	var employeeFriend model.EmployeeFriend
 
 	c.BindJSON(&employeeFriend)
+	fmt.Println(c)
 	err := Database.Save(&employeeFriend).Error
 
 	if err == nil {

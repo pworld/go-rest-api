@@ -9,7 +9,7 @@ type Employee struct {
 	Handphone     string `json:"handphone" orm:"size(32)"`
 	MaritalStatus string `json:"marital_status" orm:"size(64)"`
 	LastPosition  string `json:"last_position" orm:"size(100)"`
-	LastCompanyId int    `json:"last_company_id" orm:"size(32)"`
+	CompanyID     int    `json:"company_id" orm:"size(32)"`
 }
 
 // TableName - get table name of Employee

@@ -87,7 +87,7 @@ CREATE TABLE "public"."employees" (
 "handphone" varchar(32) COLLATE "default" NOT NULL,
 "marital_status" varchar(64) COLLATE "default",
 "last_position" varchar(100) COLLATE "default" NOT NULL,
-"last_company_id" int4 NOT NULL
+"company_id" int4 NOT NULL
 )
 WITH (OIDS=FALSE)
 
@@ -106,7 +106,7 @@ ALTER TABLE "public"."employees" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Foreign Key structure for table "public"."employees"
 -- ----------------------------
-ALTER TABLE "public"."employees" ADD FOREIGN KEY ("last_company_id") REFERENCES "public"."companies" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ALTER TABLE "public"."employees" ADD FOREIGN KEY ("company_id") REFERENCES "public"."companies" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Table structure for company_employees
@@ -134,9 +134,9 @@ ALTER TABLE "public"."company_employees" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Foreign Key structure for table "public"."company_employees"
 -- ----------------------------
-ALTER TABLE "public"."company_employees" ADD FOREIGN KEY ("status_id") REFERENCES "public"."employee_status" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."company_employees" ADD FOREIGN KEY ("employee_id") REFERENCES "public"."employees" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."company_employees" ADD FOREIGN KEY ("company_id") REFERENCES "public"."companies" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ALTER TABLE "public"."company_employees" ADD FOREIGN KEY ("status_id") REFERENCES "public"."employee_status" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ALTER TABLE "public"."company_employees" ADD FOREIGN KEY ("employee_id") REFERENCES "public"."employees" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ALTER TABLE "public"."company_employees" ADD FOREIGN KEY ("company_id") REFERENCES "public"."companies" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Table structure for employee_friends
@@ -163,9 +163,9 @@ ALTER TABLE "public"."employee_friends" ADD PRIMARY KEY ("id");
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."employee_friends"
--- ----------------------------
-ALTER TABLE "public"."employee_friends" ADD FOREIGN KEY ("employee_ktp") REFERENCES "public"."employees" ("ktp") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."employee_friends" ADD FOREIGN KEY ("friend_ktp") REFERENCES "public"."employees" ("ktp") ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- -- ----------------------------
+-- ALTER TABLE "public"."employee_friends" ADD FOREIGN KEY ("employee_ktp") REFERENCES "public"."employees" ("ktp") ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ALTER TABLE "public"."employee_friends" ADD FOREIGN KEY ("friend_ktp") REFERENCES "public"."employees" ("ktp") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Insert Master Data for table employee_status
